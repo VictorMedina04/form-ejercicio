@@ -1,0 +1,75 @@
+<div class="container-fluid" style="width: 400px">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Add new person</h1>
+        </div>
+    </div>
+    <div [hidden]="submitted">
+        <form action="" method="post" (ngSubmit)="addPerson()" #personForm="ngForm">
+            <div class="row">
+
+                <div class="col-6 mb-3">
+                    <label for="name" class="form-label">Name *</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required
+                        [(ngModel)]="persona.name" />
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="surname" class="form-label">Surname</label>
+                    <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname" required
+                        [(ngModel)]="persona.surname" />
+                </div>
+
+                <div class="col-6 mb-3">
+                    <label for="email" class="form-label">Email *</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" required
+                        [(ngModel)]="persona.email" />
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="phone" class="form-label">Phone number *</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone number" required
+                        [(ngModel)]="persona.phone" />
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label for="gender" class="form-label">Gender *</label>
+
+                    <select class="form-select" aria-label="Default select example" name="gender" id="gender" required
+                        [(ngModel)]="persona.gender">
+                        <option value="" selected="selected">-Select one-</option>
+                        @for(gender of genero; track gender){
+                        <option [value]="gender">{{ gender }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label for="conocer" class="form-label">Como nos conociste</label>
+
+                    <select class="form-select" aria-label="Default select example" name="gender" id="gender"
+                        [(ngModel)]="persona.howUNow">
+                        <option value="" selected="selected">-Select one-</option>
+                        @for(conocer of comoConociste; track conocer){
+                        <option [value]="comoConociste">{{ comoConociste }}</option>
+                        }
+                    </select>
+                </div>
+
+
+                <div class="col-6 mb-3">
+                    <label for="password" class="form-label">Age</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                        [(ngModel)]="persona.password" />
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+    <div class="row" [hidden]="!submitted">
+        <div class="col-12">
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <div>Formulario enviado</div>
+            </div>
+        </div>
+    </div>
+</div>
